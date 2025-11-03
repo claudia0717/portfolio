@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* 기본 변수 */
+:root { --background:#ffffff; --foreground:#171717; }
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --background:#0a0a0a; --foreground:#ededed; }
+}
+body { background:var(--background); color:var(--foreground); }
+
+/* 유틸 */
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none; scrollbar-width:none;}
+.bg-grain::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);
+  background-size:2px 2px; opacity:.35; mix-blend-mode:multiply;
+}
+
+/* ===== Hero 전용 키프레임 (필요한 것만) ===== */
+
+/* 불 번짐: 가로로 퍼졌다가 복귀 (위치 이동 없음; transform만 사용) */
+@keyframes flameSpread {
+  0%   { transform: scale(1)   scaleX(1); }
+  50%  { transform: scale(1.06) scaleX(1.18); }
+  100% { transform: scale(1)   scaleX(1); }
+}
+
+/* 색 순환: 노랑 → 주황 → 빨강 → 초록 → 노랑 (filter만 사용) */
+@keyframes hueCycle {
+  0%   { filter: hue-rotate(0deg); }
+  25%  { filter: hue-rotate(25deg); }
+  45%  { filter: hue-rotate(50deg); }
+  70%  { filter: hue-rotate(120deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* (옵션) 필요할 때만 모션 끄고 싶다면 body에 .reduce-motion 붙여서 사용 */
+.reduce-motion * { animation: none !important; }
