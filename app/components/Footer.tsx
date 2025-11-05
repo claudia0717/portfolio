@@ -3,7 +3,7 @@ import { chabFont } from "../fonts/chabFont";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white text-[#143f8b] border-t">
+    <footer className="w-full bg-white text-[#15377e] border-t">
       {/* 바깥 여백은 제거 → 밑 여백 과다 방지 */}
       <div className="w-full px-6 md:px-10">
         <div className="grid grid-cols-12 items-center gap-8">
@@ -37,7 +37,7 @@ export default function Footer() {
                 <a
                   href="mailto:you@example.com"
                   aria-label="email"
-                  className="p-2 rounded-md bg-[#143f8b]/5 hover:bg-[#143f8b]/10"
+                  className="p-2 rounded-md bg-[#15377e]/5 hover:bg-[#15377e]/10"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.8" />
@@ -49,7 +49,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="instagram"
-                  className="p-2 rounded-md bg-[#143f8b]/5 hover:bg-[#143f8b]/10"
+                  className="p-2 rounded-md bg-[#15377e]/5 hover:bg-[#15377e]/10"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="1.8" />

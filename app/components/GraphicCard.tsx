@@ -39,7 +39,7 @@ export default function GraphicCard(props: Props) {
           draggable={false}
         />
         <div className="pointer-events-none absolute inset-0 grid place-items-center z-10">
-          <span className="text-[#143f8b] text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-wide">
+          <span className="text-[#15377e] text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-wide">
             {label}
           </span>
         </div>
@@ -51,7 +51,7 @@ export default function GraphicCard(props: Props) {
   const {
     direction = "right",
     bgClass = "bg-[#ffd400]",
-    arrowClass = "text-[#143f8b]",
+    arrowClass = "text-[#15377e]",
     hoverLabel = "MORE",
     className,
   } = props;
@@ -80,7 +80,7 @@ export default function GraphicCard(props: Props) {
           pointer-events-none
           absolute left-1/2 -translate-x-1/2
           opacity-0 group-hover:opacity-100 transition-opacity duration-300
-          text-[#143f8b] text-base md:text-2xl font-extrabold tracking-wide
+          text-[#15377e] text-base md:text-2xl font-extrabold tracking-wide
           top-[62%]               /* ← 화살표 바로 아래. 필요시 58~66%로 조절 */
         "
       >

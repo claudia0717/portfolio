@@ -12,7 +12,7 @@ const MENU = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#143f8b] text-white">
+    <header className="sticky top-0 z-50 w-full bg-[#15377e] text-white">
       <div className="mx-auto max-w-screen-2xl h-16 md:h-20 px-4 md:px-6 flex items-center justify-between">
         {/* LEFT: 로고 (public 바로 아래라면 /logo.png 식으로) */}
         <Link href="/" aria-label="Home" className="flex items-center gap-2">
@@ -33,7 +33,7 @@ export default function Header() {
             className="
               peer
               w-10 h-10 md:w-12 md:h-12 rounded-full
-              text-[#f3c530] hover:text-[#143f8b] focus:text-[#143f8b]
+              text-[#f3c530] hover:text-[#15377e] focus:text-[#15377e]
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
               transition relative z-[60]
             "
@@ -61,9 +61,9 @@ export default function Header() {
                     key={m.href}
                     className={`
                       group/item relative
-                      border-t border-[#143f8b]/60
+                      border-t border-[#15377e]/60
                       ${i === MENU.length - 1 ? "border-b" : ""}
-                      hover:bg-[#143f8b] transition-colors
+                      hover:bg-[#15377e] transition-colors
                     `}
                   >
                     {/* 호버 시: 원래 텍스트는 숨기고(투명), 흰색 반복 텍스트(마퀴)만 중앙에 표시 */}
@@ -90,7 +90,7 @@ export default function Header() {
                         relative block w-full text-center
                         leading-none font-extrabold tracking-tight
                         py-8 md:py-10 lg:py-12
-                        text-[#143f8b]
+                        text-[#15377e]
                         text-[12vw] md:text-[9vw] lg:text-[7.2vw]
                         transition-colors
                         group-hover/item:text-transparent

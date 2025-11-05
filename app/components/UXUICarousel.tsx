@@ -55,7 +55,7 @@ export default function UXUICarousel() {
           {ITEMS.map((it) => (
             <div key={it.id} data-card className="shrink-0 w-[260px] md:w-[360px]">
               {/* 파란 카드 안에 흰 모양을 border-radius로 구현 */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#143f8b]">
+              <div className="relative aspect-[3/4] overflow-hidden bg-[#15377e]">
                 <div className={`absolute inset-0 m-0 bg-white ${shapeClass(it.v)}`} />
               </div>
               <div className="mt-3 text-center text-white/80">{it.title}</div>
