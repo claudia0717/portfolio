@@ -1,16 +1,12 @@
-import type { Metadata } from "next";
+// app/layout.tsx
 import "./globals.css";
 import Header from "./components/Header";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "My portfolio site",
-};
+export const metadata = { title: "Portfolio" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      {/* 푸터가 하단에 오도록 세로 레이아웃 */}
       <body className="min-h-screen flex flex-col">
         <Header />
         {children}

@@ -42,3 +42,12 @@ body { background:var(--background); color:var(--foreground); }
 
 /* (옵션) 필요할 때만 모션 끄고 싶다면 body에 .reduce-motion 붙여서 사용 */
 .reduce-motion * { animation: none !important; }
+
+@keyframes menu-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.menu-marquee {
+  display: inline-block;
+  animation: menu-marquee 12s linear infinite;
+}
