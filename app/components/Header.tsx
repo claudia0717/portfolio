@@ -1,7 +1,10 @@
-// app/components/Header.tsx
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
-import { brandFont } from "../fonts/brandFont"; // app/fonts/brandFont.ts 에서 export 한 폰트
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { brandFont } from "../fonts/brandFont";
 
 const MENU = [
   { href: "#graphic",  label: "GRAPHIC DESIGN" },
@@ -11,25 +14,53 @@ const MENU = [
 ];
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // 라우트/해시가 바뀌면 자동으로 닫기
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // ESC 로 닫기
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // 오버레이 열릴 때 바디 스크롤 잠금(모바일 UX)
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 w-full bg-[#15377e] text-white">
       <div className="mx-auto max-w-screen-2xl h-16 md:h-20 px-4 md:px-6 flex items-center justify-between">
-        {/* LEFT: 로고 (public 바로 아래라면 /logo.png 식으로) */}
+        {/* LEFT: 로고 */}
         <Link href="/" aria-label="Home" className="flex items-center gap-2">
           <Image src="/logo.png" alt="Logo" width={200} height={48} priority />
         </Link>
 
         <div aria-hidden className="flex-1" />
 
-        {/* RIGHT: 메뉴 아이콘 + 풀스크린 오버레이
-            - 아이콘(peer) 위에 있으면 열림
-            - 노란 오버레이(hover) 위에 있으면 유지
-            - 아이콘 근처/헤더 배경으로 돌아오면 닫힘 */}
+        {/* RIGHT: 메뉴 아이콘 + 오버레이 */}
         <div className="relative flex items-center justify-center">
-          {/* Trigger: 햄버거 아이콘 */}
+          {/* Trigger: 햄버거 아이콘 (모바일: 클릭으로 토글, 데스크탑: 호버도 유지) */}
           <button
             type="button"
             aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="header-menu-overlay"
+            onClick={() => setOpen((v) => !v)}
             className="
               peer
               w-10 h-10 md:w-12 md:h-12 rounded-full
@@ -43,18 +74,24 @@ export default function Header() {
             </svg>
           </button>
 
-          {/* Overlay: 풀스크린 노란 메뉴창 (아이콘 hover/포커스 or 자신 hover 때만 표시) */}
+          {/* Overlay: 노란 메뉴창 
+              - 모바일/접근성: open 상태로 표시
+              - 데스크탑: 아이콘/오버레이 호버 시에도 표시(기존 UX 유지)
+          */}
           <div
-            className="
+            id="header-menu-overlay"
+            className={`
               fixed inset-0 z-50 bg-[#ffd400]
-              opacity-0 pointer-events-none
+              transition-opacity duration-200
+              ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
               peer-hover:opacity-100 peer-hover:pointer-events-auto
               peer-focus:opacity-100 peer-focus:pointer-events-auto
               hover:opacity-100 hover:pointer-events-auto
-              transition-opacity duration-200
-            "
+            `}
+            // 오버레이 바깥(노란 영역) 클릭 시 닫히게 하려면 아래 onClick 해제 주석을 켜세요.
+            // onClick={() => setOpen(false)}
           >
-            <nav className={`w-full h-full overflow-y-auto ${brandFont.className}`}>
+            <nav className={`w-full h-full overflow-y-auto ${brandFont.className}`} onClick={(e) => e.stopPropagation()}>
               <ul className="w-full py-12 md:py-16">
                 {MENU.map((m, i) => (
                   <li
@@ -66,7 +103,7 @@ export default function Header() {
                       hover:bg-[#15377e] transition-colors
                     `}
                   >
-                    {/* 호버 시: 원래 텍스트는 숨기고(투명), 흰색 반복 텍스트(마퀴)만 중앙에 표시 */}
+                    {/* 호버 시 중앙 마퀴 */}
                     <div
                       className="
                         pointer-events-none absolute inset-0
@@ -83,9 +120,10 @@ export default function Header() {
                       </div>
                     </div>
 
-                    {/* 기본 텍스트: 중앙 정렬, 파란색. 항목 호버 시 투명 처리(사라짐) */}
+                    {/* 기본 텍스트 */}
                     <Link
                       href={m.href}
+                      onClick={() => setOpen(false)}
                       className="
                         relative block w-full text-center
                         leading-none font-extrabold tracking-tight

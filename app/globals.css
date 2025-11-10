@@ -55,3 +55,40 @@ body { background:var(--background); color:var(--foreground); }
 :root {
   --brand-blue: #15377e; /* 새 파란색 */
 }
+
+.mask-shape-a {
+  -webkit-mask:
+    radial-gradient(120% 120% at 0 0, #000 60%, transparent 61%);
+  mask:
+    radial-gradient(120% 120% at 0 0, #000 60%, transparent 61%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  border-radius: 24px;
+}
+.mask-shape-b {
+  -webkit-mask:
+    radial-gradient(120% 120% at 100% 0, #000 60%, transparent 61%);
+  mask:
+    radial-gradient(120% 120% at 100% 0, #000 60%, transparent 61%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  border-radius: 24px;
+}
+.mask-shape-c {
+  -webkit-mask:
+    radial-gradient(120% 120% at 0 100%, #000 60%, transparent 61%);
+  mask:
+    radial-gradient(120% 120% at 0 100%, #000 60%, transparent 61%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  border-radius: 24px;
+}
+.mask-shape-d {
+  -webkit-mask:
+    radial-gradient(120% 120% at 100% 100%, #000 60%, transparent 61%);
+  mask:
+    radial-gradient(120% 120% at 100% 100%, #000 60%, transparent 61%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  border-radius: 24px;
+}

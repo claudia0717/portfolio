@@ -15,7 +15,7 @@ export default function Footer() {
                 alt="Logo"
                 width={1600}
                 height={1600}
-                className="w-[60vw] max-w-[900px] md:w-[42vw] md:max-w-[1100px] h-auto object-contain"
+                className="w-[56vw] max-w-[900px] md:w-[42vw] md:max-w-[1100px] h-auto object-contain"
                 priority
               />
             </div>
@@ -24,16 +24,17 @@ export default function Footer() {
           {/* 오른쪽: 텍스트 (로고와 같은 위/아래 여백) */}
           <div className="col-span-12 md:col-span-6">
             <div className="py-12 md:py-16">
-              <div className={`${chabFont.className} text-right`}>
-                <p className="leading-none text-3xl md:text-6xl font-extrabold tracking-wide">
+              <div className={`${chabFont.className} text-center md:text-right`}>
+                <p className="leading-none text-2xl md:text-6xl font-extrabold tracking-wide">
                   THANK YOU FOR WATCHING
                 </p>
-                <p className="leading-none text-3xl md:text-6xl font-extrabold tracking-wide mt-3 md:mt-5">
+                <p className="leading-none text-2xl md:text-6xl font-extrabold tracking-wide mt-3 md:mt-5">
                   CONTACT ME
                 </p>
               </div>
 
-              <nav className="mt-8 md:mt-10 flex justify-end gap-3">
+              {/* SNS: 모바일 중앙, 데스크톱 오른쪽 */}
+              <nav className="mt-8 md:mt-10 flex justify-center md:justify-end gap-3">
                 <a
                   href="mailto:you@example.com"
                   aria-label="email"
@@ -65,4 +66,3 @@ export default function Footer() {
     </footer>
   );
 }
-

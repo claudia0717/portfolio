@@ -2,9 +2,6 @@
 import localFont from "next/font/local";
 
 export const brandFont = localFont({
-  // ✅ brandFont.ts와 같은 폴더에 ttf가 있으므로 상대경로로!
-  src: "./ChangwonDangamAsac-Bold.ttf",
-  weight: "700",
+  src: [{ path: "./Notable-Regular.ttf", weight: "400", style: "normal" }],
   display: "swap",
-  variable: "--font-brand",
 });
