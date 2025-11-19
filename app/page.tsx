@@ -85,7 +85,7 @@ export default function Home() {
             <h2
               className={`${chabFont.className} text-[#f3c530] text-5xl md:text-7xl font-black text-right`}
             >
-              UXUI
+              PAGE LAYOUT
             </h2>
           </div>
           <div className="mt-8 md:mt-10">
